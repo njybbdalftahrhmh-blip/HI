@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Creative Haus | رحمة - استراتيجية محتوى وتصميم</title>
+    <title>Tiara Coaching | بورتفوليو استراتيجي فاخر</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <style>
         :root {
-            --bg-cream: #ecebe4;
-            --accent-yellow: #e8e288;
-            --dark-black: #1a1a1a;
-            --text-gray: #4a4a4a;
-            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --burgundy: #632421;
+            --cream: #f5f2ed;
+            --dark-brown: #3d1b19;
+            --text-body: #4a4a4a;
+            --white: #ffffff;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -23,360 +29,418 @@
         }
 
         body {
-            background-color: var(--bg-cream);
-            color: var(--dark-black);
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--burgundy);
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        h1, h2, .serif-font {
-            font-family: 'Instrument Serif', serif;
-            font-weight: 400;
+        h1, h2, h3, .serif {
+            font-family: 'Bodoni+Moda', serif;
+            font-weight: 500;
+            text-transform: uppercase;
         }
 
-        /* --- التحريكات التلقائية (Auto-Movement) --- */
-        @keyframes floatY {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+            text-transform: none;
+            color: var(--burgundy);
         }
 
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(10px, -5px); }
+        /* --- Custom Cursor --- */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--burgundy);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s;
         }
 
-        .auto-float {
-            animation: floatY 5s ease-in-out infinite;
-        }
-
-        .auto-drift {
-            animation: drift 7s ease-in-out infinite;
-        }
-
-        /* --- Navigation --- */
-        nav {
+        /* --- Header & Nav --- */
+        header {
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            position: absolute;
+            position: fixed;
             width: 100%;
-            z-index: 100;
+            top: 0;
+            z-index: 1000;
+            background: rgba(245, 242, 237, 0.8);
+            backdrop-filter: blur(10px);
         }
 
-        .logo {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
+        nav ul {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
         }
 
-        .nav-links a {
+        nav a {
             text-decoration: none;
-            color: var(--dark-black);
-            font-size: 0.85rem;
-            font-weight: 500;
+            color: var(--burgundy);
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
-        .nav-btns {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .btn-work {
-            background: var(--accent-yellow);
+        .btn-call {
+            background: var(--burgundy);
+            color: white;
             padding: 10px 20px;
             border-radius: 50px;
+            font-size: 0.7rem;
             text-decoration: none;
-            color: var(--dark-black);
-            font-weight: 600;
-            font-size: 0.8rem;
-            border: 1px solid var(--dark-black);
         }
 
         /* --- Hero Section --- */
         .hero {
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
             align-items: center;
-            text-align: center;
+            padding: 0 5%;
             position: relative;
-            background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2000') no-repeat center center;
-            background-size: cover;
-            margin: 20px;
-            border-radius: 10px;
+            padding-top: 80px;
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.1);
+        .hero-title-container {
+            grid-column: 1 / 4;
+            text-align: center;
+            z-index: 2;
         }
 
         .hero-title {
-            font-size: 12vw;
-            color: var(--accent-yellow);
-            z-index: 10;
+            font-size: 10vw;
             line-height: 0.8;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            margin-bottom: -20px;
         }
 
-        .hero-btns {
+        .hero-img-container {
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
+            width: 35%;
+            height: 70%;
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 300px 300px 0 0;
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.2);
+        }
+
+        .hero-badge {
+            position: absolute;
+            left: 10%;
+            top: 20%;
+            background: var(--burgundy);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
             display: flex;
-            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
             z-index: 10;
         }
 
-        .pill-btn {
+        /* --- Bio Section (Overlapping Layout) --- */
+        .bio-section {
+            padding: 150px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            position: relative;
+        }
+
+        .bio-images {
+            position: relative;
+        }
+
+        .main-bio-img {
+            width: 80%;
+            border: 1px solid var(--burgundy);
+            padding: 10px;
+        }
+
+        .polaroid {
+            position: absolute;
+            bottom: -50px;
+            right: 0;
             background: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--dark-black);
-            font-weight: 600;
-            font-size: 0.9rem;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: rotate(5deg);
+            width: 200px;
+        }
+
+        .polaroid img {
+            width: 100%;
+        }
+
+        .bio-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* --- Marquee --- */
+        .marquee {
+            border-top: 1px solid var(--burgundy);
+            border-bottom: 1px solid var(--burgundy);
+            padding: 40px 0;
+            overflow: hidden;
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .marquee h2 {
+            font-size: 8rem;
+            opacity: 0.1;
+            padding: 0 50px;
+        }
+
+        /* --- Values Grid --- */
+        .values-section {
+            padding: 100px 5%;
+            background: var(--burgundy);
+            color: var(--cream);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .value-card {
+            border: 1px solid rgba(245, 242, 237, 0.2);
+            padding: 60px;
             transition: var(--transition);
         }
 
-        .pill-btn.yellow { background: var(--accent-yellow); }
-
-        /* --- Diagonal Marquees --- */
-        .marquees-container {
-            position: relative;
-            height: 150px;
-            margin-top: -50px;
-            z-index: 20;
+        .value-card:hover {
+            background: rgba(245, 242, 237, 0.05);
+            transform: translateY(-10px);
         }
 
-        .marquee {
-            position: absolute;
-            width: 120%;
-            left: -10%;
-            background: var(--dark-black);
-            color: white;
-            padding: 15px 0;
-            overflow: hidden;
+        .value-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- Offerings / Portfolio --- */
+        .stats-row {
             display: flex;
-            transform: rotate(-2deg);
-        }
-
-        .marquee.alt {
-            transform: rotate(1deg);
-            background: #252525;
-            margin-top: 50px;
-        }
-
-        .track {
-            display: flex;
-            white-space: nowrap;
-            animation: marqueeScroll 20s linear infinite;
-        }
-
-        @keyframes marqueeScroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        .track span {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            padding: 0 20px;
-        }
-
-        /* --- Agency Intro Section --- */
-        .agency-section {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            padding: 100px 8%;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .agency-text h2 {
-            font-size: 4rem;
-            line-height: 1;
-            margin-bottom: 30px;
-        }
-
-        .agency-text p {
-            color: var(--text-gray);
-            line-height: 1.8;
-            max-width: 450px;
-        }
-
-        .overlapping-images {
-            position: relative;
-            height: 500px;
-        }
-
-        .img-card {
-            position: absolute;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .img-card.main { width: 70%; height: 60%; top: 0; right: 0; z-index: 3; }
-        .img-card.sub { width: 50%; height: 50%; bottom: 0; left: 0; z-index: 2; animation-delay: 1s; }
-        .img-card.deco { width: 40%; height: 30%; top: 40%; left: 10%; z-index: 1; animation-delay: 2s; }
-
-        .img-card img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- What We Offer Section --- */
-        .offers-section {
-            padding: 100px 8%;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            background: #e4e3dc;
-        }
-
-        .vertical-title {
-            font-size: 8rem;
-            line-height: 0.8;
-            color: transparent;
-            -webkit-text-stroke: 1px var(--dark-black);
-            opacity: 0.4;
-        }
-
-        .service-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .service-box {
-            background: var(--accent-yellow);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid var(--dark-black);
-            position: relative;
-        }
-
-        .service-box.alt {
-            background: white;
-            animation-delay: 1.5s;
-        }
-
-        /* --- Footer Bar --- */
-        .footer-cta {
-            background: var(--dark-black);
-            color: white;
-            padding: 20px;
+            justify-content: space-between;
+            padding: 100px 10%;
             text-align: center;
-            font-size: 1.5rem;
+        }
+
+        .stat-item h4 {
+            font-size: 4rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 100px 5% 50px;
+            text-align: center;
+            border-top: 1px solid rgba(99, 36, 33, 0.1);
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: var(--burgundy);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
             font-weight: 600;
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .agency-section, .offers-section { grid-template-columns: 1fr; }
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(50px); }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-img-container { width: 80%; height: 50%; top: 60%; }
+            .bio-section, .values-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 18vw; }
-            .vertical-title { font-size: 5rem; }
+            .stats-row { flex-direction: column; gap: 50px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">The Creative Haus</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Blog</a></li>
-        </ul>
-        <div class="nav-btns">
-            <a href="#">Login</a>
-            <a href="#" class="btn-work">Work With Us</a>
-        </div>
-    </nav>
+    <div id="cursor"></div>
+
+    <header>
+        <div class="logo serif" style="font-weight: 800;">TIARA COACHING</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#work">WORK WITH ME</a></li>
+                <li><a href="#podcast">PODCAST</a></li>
+                <li><a href="#blog">BLOG</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="btn-call">BOOK A CALL</a>
+    </header>
 
     <section class="hero">
-        <h1 class="hero-title">Creative Haus</h1>
-        <div class="hero-btns">
-            <a href="#" class="pill-btn yellow">About Us →</a>
-            <a href="#" class="pill-btn">How We Can Help →</a>
-            <a href="#" class="pill-btn">Reach Out →</a>
+        <div class="hero-badge">Logo</div>
+        <div class="hero-title-container">
+            <h1 class="hero-title">HI, I'M <span class="cursive" style="color: var(--burgundy);">Tiara</span></h1>
+        </div>
+        <div class="hero-img-container">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000" alt="Tiara">
+        </div>
+        <div style="grid-column: 1; padding: 20px;" class="reveal">
+            <p class="serif" style="font-size: 0.8rem;">BUSINESS COACH FOR<br>CREATIVE SERVICE PROVIDERS</p>
+        </div>
+        <div style="grid-column: 3; text-align: right; padding: 20px;" class="reveal">
+            <p class="serif" style="font-size: 0.8rem;">HOST OF THE<br>TIARA SHOW</p>
         </div>
     </section>
 
-    <div class="marquees-container">
-        <div class="marquee">
-            <div class="track">
-                <span>* Don't Let Your Content Hold You Back</span>
-                <span>* Don't Let Your Content Hold You Back</span>
-                <span>* Don't Let Your Content Hold You Back</span>
-                <span>* Don't Let Your Content Hold You Back</span>
+    <section class="bio-section" id="about">
+        <div class="bio-images">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" class="main-bio-img reveal" alt="Work">
+            <div class="polaroid reveal">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=400" alt="Selfie">
             </div>
         </div>
-        <div class="marquee alt">
-            <div class="track">
-                <span>* Specialists in Growth & Creation</span>
-                <span>* Specialists in Growth & Creation</span>
-                <span>* Specialists in Growth & Creation</span>
-                <span>* Specialists in Growth & Creation</span>
-            </div>
+        <div class="bio-text">
+            <span class="cursive" style="font-size: 1.5rem;">Hey, I'm Tiara</span>
+            <h2 class="reveal">BUSINESS COACH, PODCASTER, AND YOUR CHEERLEADER</h2>
+            <p class="reveal">أنا هنا لأساعدك على بناء أعمال تتوافق مع أسلوب حياتك، وليس العكس. من خلال استراتيجيات مدروسة وتصميم يمس الروح، سنقوم بتحويل شغفك إلى إمبراطورية رابحة.</p>
+            <a href="#" class="btn-main reveal">WORK WITH ME</a>
+        </div>
+    </section>
+
+    <div class="marquee">
+        <div class="track">
+            <h2>MY VALUES • MY VALUES • MY VALUES • MY VALUES • MY VALUES • MY VALUES • MY VALUES •</h2>
         </div>
     </div>
 
-    <section class="agency-section">
-        <div class="agency-text">
-            <h2>A Full Scale Agency Specializing in <br><i class="serif-font" style="color: var(--accent-yellow)">Content Creation</i> & Advertising</h2>
-            <p>نحن نؤمن بأن المحتوى هو روح العلامة التجارية. نساعدك على بناء حضور رقمي لا يمكن تجاهله من خلال استراتيجيات مدروسة وتصاميم تخطف الأنظار.</p>
-            <br>
-            <a href="#" class="pill-btn yellow" style="display: inline-block;">Learn more →</a>
-        </div>
-        <div class="overlapping-images">
-            <div class="img-card main auto-float">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" alt="Work">
+    <section class="values-section">
+        <div class="values-grid">
+            <div class="value-card reveal">
+                <h3>AUTHENTICITY</h3>
+                <p>عملك يجب أن يشبهك أنت فقط. نحن نبتعد عن القوالب الجاهزة لنخلق هوية تعكس قيمك الحقيقية.</p>
             </div>
-            <div class="img-card sub auto-drift">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800" alt="Office">
+            <div class="value-card reveal">
+                <h3>FREEDOM</h3>
+                <p>الهدف ليس فقط كسب المال، بل امتلاك الوقت والحرية لتعيش الحياة التي تحلم بها.</p>
             </div>
-            <div class="img-card deco auto-float">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800" alt="Agency">
+            <div class="value-card reveal">
+                <h3>IMPACT</h3>
+                <p>نحن لا نبيع منتجات، نحن نصنع تأثيراً يغير حياة عملائك إلى الأفضل.</p>
             </div>
-        </div>
-    </section>
-
-    <section class="offers-section">
-        <div class="vertical-title auto-drift">
-            What<br>We<br>Offer
-        </div>
-        <div class="service-cards">
-            <div class="service-box auto-float">
-                <h3 class="serif-font" style="font-size: 2.5rem;">Content Creation</h3>
-                <p>صناعة محتوى بصري وكتابي يتناسب مع هوية مشروعك، من التصميم الجرافيكي إلى إنتاج الفيديو الاحترافي.</p>
-            </div>
-            <div class="service-box alt auto-float">
-                <h3 class="serif-font" style="font-size: 2.5rem;">Advertising & Management</h3>
-                <p>إدارة الحملات الإعلانية الممولة وتحليل البيانات لضمان وصول رسالتك للجمهور المستهدف بدقة.</p>
+            <div class="value-card reveal">
+                <h3>GROWTH MINDSET</h3>
+                <p>النجاح رحلة مستمرة من التعلم والتطوير. نحن نحتفل بكل خطوة صغيرة للأمام.</p>
             </div>
         </div>
     </section>
 
-    <div class="footer-cta">
-        Download Free Patterns! — Work With The Best — Get Started Today — 
-    </div>
+    <section class="stats-row">
+        <div class="stat-item reveal">
+            <h4>200+</h4>
+            <p class="serif">STUDENTS HELPED</p>
+        </div>
+        <div class="stat-item reveal">
+            <h4>5+</h4>
+            <p class="serif">YEARS EXPERIENCE</p>
+        </div>
+        <div class="stat-item reveal">
+            <h4>100K</h4>
+            <p class="serif">PODCAST DOWNLOADS</p>
+        </div>
+    </section>
+
+    <footer>
+        <h2 class="serif" style="font-size: 4rem;">TIARA</h2>
+        <p>© 2026 جميع الحقوق محفوظة لـ رحمة - تصميم استراتيجي</p>
+        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
+            <a href="#" style="color: var(--burgundy); text-decoration: none;">Instagram</a>
+            <a href="#" style="color: var(--burgundy); text-decoration: none;">LinkedIn</a>
+            <a href="#" style="color: var(--burgundy); text-decoration: none;">Pinterest</a>
+        </div>
+    </footer>
 
     <script>
-        // إضافة حركة بسيطة للـ Marquee للتأكد من سلاستها
-        const tracks = document.querySelectorAll('.track');
-        tracks.forEach(track => {
-            const content = track.innerHTML;
-            track.innerHTML = content + content; // مضاعفة المحتوى لضمان استمرارية الحركة
+        // 1. Custom Cursor Movement
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // 2. GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Parallax
+        gsap.to(".hero-img-container img", {
+            y: -50,
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                scrub: true
+            }
+        });
+
+        // Reveal Elements on Scroll
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(el => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power4.out"
+            });
+        });
+
+        // Marquee Animation
+        gsap.to(".track", {
+            xPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".marquee",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+
+        // Hover Effect for Cards
+        document.querySelectorAll('.value-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(3)';
+            });
+            card.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+            });
         });
     </script>
 </body>
