@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiara Coaching | بورتفوليو استراتيجي فاخر</title>
+    <title>The Creative Haus | رحمة - استراتيجية محتوى وتصميم</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
     <style>
         :root {
-            --burgundy: #632421;
-            --cream: #f5f2ed;
-            --dark-brown: #3d1b19;
-            --text-body: #4a4a4a;
-            --white: #ffffff;
-            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-cream: #ecebe4;
+            --accent-yellow: #e8e288;
+            --dark-black: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
@@ -29,419 +23,290 @@
         }
 
         body {
-            background-color: var(--cream);
-            color: var(--burgundy);
-            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--dark-black);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        h1, h2, h3, .serif {
-            font-family: 'Bodoni+Moda', serif;
-            font-weight: 500;
-            text-transform: uppercase;
+        h1, h2, .serif-font {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
         }
 
-        .cursive {
-            font-family: 'Dancing Script', cursive;
-            text-transform: none;
-            color: var(--burgundy);
+        /* --- Animations --- */
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        /* --- Custom Cursor --- */
-        #cursor {
-            width: 20px;
-            height: 20px;
-            background: var(--burgundy);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s;
-        }
+        .auto-float { animation: floatY 5s ease-in-out infinite; }
 
-        /* --- Header & Nav --- */
-        header {
-            padding: 20px 5%;
+        /* --- Navigation Responsive --- */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
+            padding: 20px 5%;
+            position: absolute;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(245, 242, 237, 0.8);
-            backdrop-filter: blur(10px);
+            z-index: 100;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             list-style: none;
         }
 
-        nav a {
-            text-decoration: none;
-            color: var(--burgundy);
-            font-size: 0.7rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 600;
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* إخفاء الروابط في الجوال لتبسيط التصميم */
+            .hero-title { font-size: 20vw !important; }
+            .hero-btns { flex-direction: column; width: 80%; }
         }
 
-        .btn-call {
-            background: var(--burgundy);
-            color: white;
-            padding: 10px 20px;
+        .btn-work {
+            background: var(--accent-yellow);
+            padding: 8px 18px;
             border-radius: 50px;
-            font-size: 0.7rem;
             text-decoration: none;
+            color: var(--dark-black);
+            border: 1px solid var(--dark-black);
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
         /* --- Hero Section --- */
         .hero {
-            height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 0 5%;
-            position: relative;
-            padding-top: 80px;
-        }
-
-        .hero-title-container {
-            grid-column: 1 / 4;
             text-align: center;
-            z-index: 2;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2000') no-repeat center center;
+            background-size: cover;
+            margin: 15px;
+            border-radius: 20px;
         }
 
         .hero-title {
             font-size: 10vw;
-            line-height: 0.8;
-            margin-bottom: -20px;
+            color: var(--accent-yellow);
+            z-index: 10;
+            line-height: 0.9;
         }
 
-        .hero-img-container {
-            position: absolute;
-            left: 50%;
-            top: 55%;
-            transform: translate(-50%, -50%);
-            width: 35%;
-            height: 70%;
-            z-index: 1;
-            overflow: hidden;
-            border-radius: 300px 300px 0 0;
-        }
-
-        .hero-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(0.2);
-        }
-
-        .hero-badge {
-            position: absolute;
-            left: 10%;
-            top: 20%;
-            background: var(--burgundy);
-            color: white;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+        .hero-btns {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: rotate(-15deg);
+            gap: 10px;
+            margin-top: 20px;
             z-index: 10;
         }
 
-        /* --- Bio Section (Overlapping Layout) --- */
-        .bio-section {
-            padding: 150px 10%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-            position: relative;
-        }
-
-        .bio-images {
-            position: relative;
-        }
-
-        .main-bio-img {
-            width: 80%;
-            border: 1px solid var(--burgundy);
-            padding: 10px;
-        }
-
-        .polaroid {
-            position: absolute;
-            bottom: -50px;
-            right: 0;
+        .pill-btn {
             background: white;
-            padding: 10px 10px 40px 10px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            transform: rotate(5deg);
-            width: 200px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--dark-black);
+            font-size: 0.85rem;
+            transition: 0.3s;
         }
 
-        .polaroid img {
-            width: 100%;
+        .pill-btn.yellow { background: var(--accent-yellow); }
+
+        /* --- Diagonal X Marquees --- */
+        .marquees-wrapper {
+            position: relative;
+            height: 200px;
+            margin-top: -100px;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .bio-text h2 {
-            font-size: 3.5rem;
-            margin-bottom: 30px;
-        }
-
-        /* --- Marquee --- */
         .marquee {
-            border-top: 1px solid var(--burgundy);
-            border-bottom: 1px solid var(--burgundy);
-            padding: 40px 0;
+            position: absolute;
+            width: 150%;
+            background: var(--dark-black);
+            color: white;
+            padding: 15px 0;
             overflow: hidden;
             display: flex;
             white-space: nowrap;
+            border-top: 1px solid var(--accent-yellow);
+            border-bottom: 1px solid var(--accent-yellow);
         }
 
-        .marquee h2 {
-            font-size: 8rem;
-            opacity: 0.1;
-            padding: 0 50px;
+        /* تصميم الـ X */
+        .marquee-1 { transform: rotate(-3deg); z-index: 2; }
+        .marquee-2 { transform: rotate(3deg); background: #252525; z-index: 1; }
+
+        .track {
+            display: flex;
+            animation: scroll 30s linear infinite;
         }
 
-        /* --- Values Grid --- */
-        .values-section {
-            padding: 100px 5%;
-            background: var(--burgundy);
-            color: var(--cream);
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(50%); } /* اتجاه الحركة لليمين ليتناسب مع RTL */
         }
 
-        .values-grid {
+        .track span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding: 0 40px;
+            text-transform: uppercase;
+        }
+
+        /* --- Agency Section --- */
+        .agency-section {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
+            padding: 100px 10%;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .agency-section { grid-template-columns: 1fr; text-align: center; }
+            .overlapping-images { height: 350px !important; }
+        }
+
+        .overlapping-images {
+            position: relative;
+            height: 450px;
+        }
+
+        .img-card {
+            position: absolute;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .img-card.main { width: 70%; height: 70%; top: 0; right: 0; z-index: 3; }
+        .img-card.sub { width: 50%; height: 50%; bottom: 0; left: 0; z-index: 4; border: 5px solid var(--bg-cream); }
+
+        .img-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Services --- */
+        .offers-section {
+            padding: 80px 10%;
+            background: #e4e3dc;
+            display: grid;
+            grid-template-columns: 0.5fr 1fr;
             gap: 40px;
         }
 
-        .value-card {
-            border: 1px solid rgba(245, 242, 237, 0.2);
-            padding: 60px;
-            transition: var(--transition);
+        .vertical-title {
+            font-size: 6rem;
+            line-height: 0.9;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--dark-black);
+            opacity: 0.3;
         }
 
-        .value-card:hover {
-            background: rgba(245, 242, 237, 0.05);
-            transform: translateY(-10px);
-        }
-
-        .value-card h3 {
-            font-size: 2rem;
+        .service-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
             margin-bottom: 20px;
+            border-right: 5px solid var(--accent-yellow);
         }
-
-        /* --- Offerings / Portfolio --- */
-        .stats-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 100px 10%;
-            text-align: center;
-        }
-
-        .stat-item h4 {
-            font-size: 4rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 100px 5% 50px;
-            text-align: center;
-            border-top: 1px solid rgba(99, 36, 33, 0.1);
-        }
-
-        .btn-main {
-            display: inline-block;
-            background: var(--burgundy);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 20px;
-            font-weight: 600;
-        }
-
-        /* --- Animations --- */
-        .reveal { opacity: 0; transform: translateY(50px); }
 
         @media (max-width: 768px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-img-container { width: 80%; height: 50%; top: 60%; }
-            .bio-section, .values-grid { grid-template-columns: 1fr; }
-            .hero-title { font-size: 18vw; }
-            .stats-row { flex-direction: column; gap: 50px; }
+            .offers-section { grid-template-columns: 1fr; }
+            .vertical-title { font-size: 4rem; text-align: center; }
         }
+
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-
-    <header>
-        <div class="logo serif" style="font-weight: 800;">TIARA COACHING</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#work">WORK WITH ME</a></li>
-                <li><a href="#podcast">PODCAST</a></li>
-                <li><a href="#blog">BLOG</a></li>
-            </ul>
-        </nav>
-        <a href="#" class="btn-call">BOOK A CALL</a>
-    </header>
+    <nav>
+        <div class="logo">The Creative Haus</div>
+        <ul class="nav-links">
+            <li><a href="#" style="text-decoration:none; color:black;">الرئيسية</a></li>
+            <li><a href="#" style="text-decoration:none; color:black;">خدماتنا</a></li>
+            <li><a href="#" style="text-decoration:none; color:black;">عنا</a></li>
+        </ul>
+        <div class="nav-btns">
+            <a href="#" class="btn-work">ابدأ مشروعك الآن</a>
+        </div>
+    </nav>
 
     <section class="hero">
-        <div class="hero-badge">Logo</div>
-        <div class="hero-title-container">
-            <h1 class="hero-title">HI, I'M <span class="cursive" style="color: var(--burgundy);">Tiara</span></h1>
-        </div>
-        <div class="hero-img-container">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000" alt="Tiara">
-        </div>
-        <div style="grid-column: 1; padding: 20px;" class="reveal">
-            <p class="serif" style="font-size: 0.8rem;">BUSINESS COACH FOR<br>CREATIVE SERVICE PROVIDERS</p>
-        </div>
-        <div style="grid-column: 3; text-align: right; padding: 20px;" class="reveal">
-            <p class="serif" style="font-size: 0.8rem;">HOST OF THE<br>TIARA SHOW</p>
+        <h1 class="hero-title">Creative Haus</h1>
+        <div class="hero-btns">
+            <a href="#" class="pill-btn yellow">من نحن؟ ←</a>
+            <a href="#" class="pill-btn">تواصل معنا ←</a>
         </div>
     </section>
 
-    <section class="bio-section" id="about">
-        <div class="bio-images">
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" class="main-bio-img reveal" alt="Work">
-            <div class="polaroid reveal">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=400" alt="Selfie">
+    <div class="marquees-wrapper">
+        <div class="marquee marquee-1">
+            <div class="track" id="track1">
+                <span>* صناعة المحتوى هي مفتاح النمو</span>
+                <span>* استراتيجيات تسويقية ذكية</span>
+                <span>* تصميم يروي قصة هويتك</span>
             </div>
         </div>
-        <div class="bio-text">
-            <span class="cursive" style="font-size: 1.5rem;">Hey, I'm Tiara</span>
-            <h2 class="reveal">BUSINESS COACH, PODCASTER, AND YOUR CHEERLEADER</h2>
-            <p class="reveal">أنا هنا لأساعدك على بناء أعمال تتوافق مع أسلوب حياتك، وليس العكس. من خلال استراتيجيات مدروسة وتصميم يمس الروح، سنقوم بتحويل شغفك إلى إمبراطورية رابحة.</p>
-            <a href="#" class="btn-main reveal">WORK WITH ME</a>
-        </div>
-    </section>
-
-    <div class="marquee">
-        <div class="track">
-            <h2>MY VALUES • MY VALUES • MY VALUES • MY VALUES • MY VALUES • MY VALUES • MY VALUES •</h2>
+        <div class="marquee marquee-2">
+            <div class="track" id="track2">
+                <span>* نحن نبني علامتك التجارية</span>
+                <span>* خبراء الإعلانات والتصميم</span>
+                <span>* حلول رقمية متكاملة</span>
+            </div>
         </div>
     </div>
 
-    <section class="values-section">
-        <div class="values-grid">
-            <div class="value-card reveal">
-                <h3>AUTHENTICITY</h3>
-                <p>عملك يجب أن يشبهك أنت فقط. نحن نبتعد عن القوالب الجاهزة لنخلق هوية تعكس قيمك الحقيقية.</p>
+    <section class="agency-section">
+        <div class="agency-text">
+            <h2>وكالة إبداعية متخصصة في <br><span class="serif-font" style="color: #b5a900; font-size: 3.5rem;">صناعة المحتوى</span></h2>
+            <p style="margin-top:20px; font-size: 1.1rem; color: var(--text-gray);">نحن نؤمن بأن المحتوى هو روح العلامة التجارية. نساعدك على بناء حضور رقمي لا يمكن تجاهله من خلال استراتيجيات مدروسة وتصاميم تخطف الأنظار.</p>
+            <br>
+            <a href="#" class="pill-btn yellow" style="display: inline-block; border: 1px solid black;">اكتشف المزيد</a>
+        </div>
+        <div class="overlapping-images">
+            <div class="img-card main auto-float">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" alt="Work">
             </div>
-            <div class="value-card reveal">
-                <h3>FREEDOM</h3>
-                <p>الهدف ليس فقط كسب المال، بل امتلاك الوقت والحرية لتعيش الحياة التي تحلم بها.</p>
-            </div>
-            <div class="value-card reveal">
-                <h3>IMPACT</h3>
-                <p>نحن لا نبيع منتجات، نحن نصنع تأثيراً يغير حياة عملائك إلى الأفضل.</p>
-            </div>
-            <div class="value-card reveal">
-                <h3>GROWTH MINDSET</h3>
-                <p>النجاح رحلة مستمرة من التعلم والتطوير. نحن نحتفل بكل خطوة صغيرة للأمام.</p>
+            <div class="img-card sub">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800" alt="Office">
             </div>
         </div>
     </section>
 
-    <section class="stats-row">
-        <div class="stat-item reveal">
-            <h4>200+</h4>
-            <p class="serif">STUDENTS HELPED</p>
-        </div>
-        <div class="stat-item reveal">
-            <h4>5+</h4>
-            <p class="serif">YEARS EXPERIENCE</p>
-        </div>
-        <div class="stat-item reveal">
-            <h4>100K</h4>
-            <p class="serif">PODCAST DOWNLOADS</p>
+    <section class="offers-section">
+        <div class="vertical-title">WHAT<br>WE<br>DO</div>
+        <div class="service-cards">
+            <div class="service-box">
+                <h3 class="serif-font" style="font-size: 2rem;">Content Creation</h3>
+                <p>صناعة محتوى بصري وكتابي يتناسب مع هوية مشروعك.</p>
+            </div>
+            <div class="service-box" style="background: var(--accent-yellow);">
+                <h3 class="serif-font" style="font-size: 2rem;">Management</h3>
+                <p>إدارة الحملات الإعلانية الممولة لضمان أفضل النتائج.</p>
+            </div>
         </div>
     </section>
-
-    <footer>
-        <h2 class="serif" style="font-size: 4rem;">TIARA</h2>
-        <p>© 2026 جميع الحقوق محفوظة لـ رحمة - تصميم استراتيجي</p>
-        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
-            <a href="#" style="color: var(--burgundy); text-decoration: none;">Instagram</a>
-            <a href="#" style="color: var(--burgundy); text-decoration: none;">LinkedIn</a>
-            <a href="#" style="color: var(--burgundy); text-decoration: none;">Pinterest</a>
-        </div>
-    </footer>
 
     <script>
-        // 1. Custom Cursor Movement
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+        // دالة لمضاعفة المحتوى لضمان اللوب المستمر بدون فراغات
+        function setupMarquee(id) {
+            const track = document.getElementById(id);
+            const content = track.innerHTML;
+            // نكرر المحتوى 4 مرات لملء الشاشة مهما كان عرضها
+            track.innerHTML = content + content + content + content;
+        }
 
-        // 2. GSAP Scroll Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero Parallax
-        gsap.to(".hero-img-container img", {
-            y: -50,
-            scrollTrigger: {
-                trigger: ".hero",
-                start: "top top",
-                scrub: true
-            }
-        });
-
-        // Reveal Elements on Scroll
-        const reveals = document.querySelectorAll('.reveal');
-        reveals.forEach(el => {
-            gsap.to(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                ease: "power4.out"
-            });
-        });
-
-        // Marquee Animation
-        gsap.to(".track", {
-            xPercent: -50,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".marquee",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1
-            }
-        });
-
-        // Hover Effect for Cards
-        document.querySelectorAll('.value-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(3)';
-            });
-            card.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-            });
-        });
+        setupMarquee('track1');
+        setupMarquee('track2');
     </script>
 </body>
 </html>
