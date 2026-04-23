@@ -3,443 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omma Boutique | رحمة - بورتفوليو إبداعي</title>
+    <title>The Creative Haus | رحمة - استراتيجية محتوى وتصميم</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Outfit:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #ffffff;
-            --soft-pink: #fce4ec;
-            --hot-pink: #ff85c1;
-            --text-dark: #2d2d2d;
-            --accent-pink: #f8bbd0;
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-cream: #ecebe4;
+            --accent-yellow: #e8e288;
+            --dark-black: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            color: var(--dark-black);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        /* --- الأشكال المرسومة يدوياً (Doodles) --- */
-        .doodle {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.6;
-            z-index: 1;
-            filter: drop-shadow(2px 2px 2px rgba(255,133,193,0.3));
+        h1, h2, .serif-font {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
         }
 
-        /* --- Header --- */
-        header {
-            padding: 20px 5%;
+        /* --- التحريكات التلقائية (Auto-Movement) --- */
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10px, -5px); }
+        }
+
+        .auto-float {
+            animation: floatY 5s ease-in-out infinite;
+        }
+
+        .auto-drift {
+            animation: drift 7s ease-in-out infinite;
+        }
+
+        /* --- Navigation --- */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            position: absolute;
+            width: 100%;
             z-index: 100;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -1px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             list-style: none;
         }
 
-        nav a {
+        .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            color: var(--dark-black);
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
-        .header-btns {
+        .nav-btns {
             display: flex;
             gap: 15px;
             align-items: center;
         }
 
-        .btn-play {
-            background: var(--soft-pink);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn-contact {
-            background: var(--hot-pink);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+        .btn-work {
+            background: var(--accent-yellow);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--dark-black);
+            font-weight: 600;
+            font-size: 0.8rem;
+            border: 1px solid var(--dark-black);
         }
 
         /* --- Hero Section --- */
         .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 50px 10%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
             position: relative;
+            background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2000') no-repeat center center;
+            background-size: cover;
+            margin: 20px;
+            border-radius: 10px;
         }
 
-        .hero-text {
-            padding-left: 50px;
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.1);
         }
 
-        .hero-text h1 {
-            font-family: 'Pinyon Script', cursive;
+        .hero-title {
+            font-size: 12vw;
+            color: var(--accent-yellow);
+            z-index: 10;
+            line-height: 0.8;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .pill-btn {
+            background: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--dark-black);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .pill-btn.yellow { background: var(--accent-yellow); }
+
+        /* --- Diagonal Marquees --- */
+        .marquees-container {
+            position: relative;
+            height: 150px;
+            margin-top: -50px;
+            z-index: 20;
+        }
+
+        .marquee {
+            position: absolute;
+            width: 120%;
+            left: -10%;
+            background: var(--dark-black);
+            color: white;
+            padding: 15px 0;
+            overflow: hidden;
+            display: flex;
+            transform: rotate(-2deg);
+        }
+
+        .marquee.alt {
+            transform: rotate(1deg);
+            background: #252525;
+            margin-top: 50px;
+        }
+
+        .track {
+            display: flex;
+            white-space: nowrap;
+            animation: marqueeScroll 20s linear infinite;
+        }
+
+        @keyframes marqueeScroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        .track span {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 0 20px;
+        }
+
+        /* --- Agency Intro Section --- */
+        .agency-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            padding: 100px 8%;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .agency-text h2 {
             font-size: 4rem;
-            color: var(--hot-pink);
-            margin-bottom: 20px;
             line-height: 1;
-        }
-
-        .hero-text p {
-            max-width: 350px;
-            font-size: 0.95rem;
-            color: #666;
             margin-bottom: 30px;
         }
 
-        .hero-img {
+        .agency-text p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            max-width: 450px;
+        }
+
+        .overlapping-images {
             position: relative;
-            z-index: 2;
+            height: 500px;
         }
 
-        .hero-img img {
-            width: 100%;
-            border-radius: 5px;
-            transform: rotate(2deg);
-            box-shadow: 20px 20px 0 var(--soft-pink);
-        }
-
-        /* --- Category Bar (Auto Moving) --- */
-        .categories-container {
-            padding: 60px 0;
-            overflow: hidden;
-            background: #fff;
-            position: relative;
-        }
-
-        .categories-track {
-            display: flex;
-            gap: 50px;
-            width: max-content;
-            animation: scroll 30s linear infinite;
-        }
-
-        .cat-item {
-            text-align: center;
-            min-width: 100px;
-        }
-
-        .cat-item img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 10px;
-            transition: var(--transition);
-        }
-
-        .cat-item span {
-            font-size: 0.75rem;
-            display: block;
-            font-weight: 500;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(50%); }
-        }
-
-        /* --- About Section (The Camera) --- */
-        .about-section {
-            padding: 100px 10%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            position: relative;
-        }
-
-        .camera-container {
-            position: relative;
-            /* حركة طفو تلقائية للكاميرا */
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .camera-frame {
-            width: 100%;
-            max-width: 500px;
-            position: relative;
-        }
-
-        .camera-screen-img {
+        .img-card {
             position: absolute;
-            top: 22%;
-            left: 17%;
-            width: 63%;
-            height: 52%;
-            object-fit: cover;
-            border-radius: 5px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .about-text h2 {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 3rem;
-            color: var(--hot-pink);
-            margin-bottom: 20px;
-        }
+        .img-card.main { width: 70%; height: 60%; top: 0; right: 0; z-index: 3; }
+        .img-card.sub { width: 50%; height: 50%; bottom: 0; left: 0; z-index: 2; animation-delay: 1s; }
+        .img-card.deco { width: 40%; height: 30%; top: 40%; left: 10%; z-index: 1; animation-delay: 2s; }
 
-        /* --- Product Grid (Auto Floating Cards) --- */
-        .products {
-            padding: 80px 10%;
-        }
+        .img-card img { width: 100%; height: 100%; object-fit: cover; }
 
-        .products-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 50px;
-        }
-
-        .products-header h2 {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 3.5rem;
-            color: var(--hot-pink);
-        }
-
-        .grid {
+        /* --- What We Offer Section --- */
+        .offers-section {
+            padding: 100px 8%;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: 1fr 1.5fr;
+            background: #e4e3dc;
         }
 
-        .product-card {
-            background: #fff;
-            padding: 15px;
-            position: relative;
-            /* حركة طفو تلقائية لكل كارد */
-            animation: float 6s ease-in-out infinite;
+        .vertical-title {
+            font-size: 8rem;
+            line-height: 0.8;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--dark-black);
+            opacity: 0.4;
         }
 
-        /* نغير توقيت الحركة لكل كارد ليظهر التنوع */
-        .product-card:nth-child(2) { animation-delay: 1s; }
-        .product-card:nth-child(3) { animation-delay: 2s; }
-
-        .product-card img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            background: #f9f9f9;
-            margin-bottom: 15px;
-        }
-
-        .product-info {
+        .service-cards {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .service-box {
+            background: var(--accent-yellow);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--dark-black);
+            position: relative;
+        }
+
+        .service-box.alt {
+            background: white;
+            animation-delay: 1.5s;
+        }
+
+        /* --- Footer Bar --- */
+        .footer-cta {
+            background: var(--dark-black);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
             font-weight: 600;
         }
 
-        .swatches {
-            display: flex;
-            gap: 5px;
-            margin-top: 10px;
-        }
-
-        .swatch {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        /* --- Animations --- */
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 100px 10% 50px;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-
-        .btn-main {
-            background: var(--hot-pink);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .btn-main:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(255, 133, 193, 0.3);
-        }
-
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero, .about-section, .grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-text { padding: 0; text-align: center; order: 2; }
-            .hero-img { order: 1; margin-bottom: 40px; }
-            header nav { display: none; }
+        @media (max-width: 992px) {
+            .agency-section, .offers-section { grid-template-columns: 1fr; }
+            .hero-title { font-size: 18vw; }
+            .vertical-title { font-size: 5rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Omma (Твой онлайн бутик)</div>
-        <nav>
-            <ul>
-                <li><a href="#">Каталог</a></li>
-                <li><a href="#">Как заказать</a></li>
-                <li><a href="#">Доставка</a></li>
-                <li><a href="#">Обо мне</a></li>
-                <li><a href="#">Соцсети</a></li>
-            </ul>
-        </nav>
-        <div class="header-btns">
-            <button class="btn-play"><span>▶</span> Включить мелодию</button>
-            <button class="btn-contact">Написать</button>
+    <nav>
+        <div class="logo">The Creative Haus</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+        <div class="nav-btns">
+            <a href="#">Login</a>
+            <a href="#" class="btn-work">Work With Us</a>
         </div>
-    </header>
+    </nav>
 
     <section class="hero">
-        <svg class="doodle" style="top: 10%; left: 45%; width: 60px;" viewBox="0 0 100 100"><path d="M50 20 C60 0 90 0 90 30 C90 60 50 90 50 90 C50 90 10 60 10 30 C10 0 40 0 50 20" fill="none" stroke="#ff85c1" stroke-width="2"/></svg>
-        
-        <div class="hero-text">
-            <h1>Privet, krasavitsa!</h1>
-            <p>Добро пожаловать в Omma: онлайн бутик, где вещи подобраны с любовью и вниманием к деталям. Здесь ты найдешь не массовый рынок, а то, что действительно выделяет тебя из толпы.</p>
-            <button class="btn-main">Перейти в каталог</button>
-        </div>
-        
-        <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000" alt="Model">
+        <h1 class="hero-title">Creative Haus</h1>
+        <div class="hero-btns">
+            <a href="#" class="pill-btn yellow">About Us →</a>
+            <a href="#" class="pill-btn">How We Can Help →</a>
+            <a href="#" class="pill-btn">Reach Out →</a>
         </div>
     </section>
 
-    <div class="categories-container">
-        <div class="categories-track">
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/10691/10691316.png"><span>Украшения</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/2904/2904855.png"><span>Сумки</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/2742/2742686.png"><span>Обувь</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/2503/2503380.png"><span>Футболки</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/10555/10555431.png"><span>Платья</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/1785/1785341.png"><span>Юбки</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/10691/10691316.png"><span>Украшения</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/2904/2904855.png"><span>Сумки</span></div>
-            <div class="cat-item"><img src="https://cdn-icons-png.flaticon.com/512/2742/2742686.png"><span>Обувь</span></div>
+    <div class="marquees-container">
+        <div class="marquee">
+            <div class="track">
+                <span>* Don't Let Your Content Hold You Back</span>
+                <span>* Don't Let Your Content Hold You Back</span>
+                <span>* Don't Let Your Content Hold You Back</span>
+                <span>* Don't Let Your Content Hold You Back</span>
+            </div>
+        </div>
+        <div class="marquee alt">
+            <div class="track">
+                <span>* Specialists in Growth & Creation</span>
+                <span>* Specialists in Growth & Creation</span>
+                <span>* Specialists in Growth & Creation</span>
+                <span>* Specialists in Growth & Creation</span>
+            </div>
         </div>
     </div>
 
-    <section class="about-section">
-        <div class="camera-container">
-            <div class="camera-frame">
-                <img src="https://i.ibb.co/L9Y0YpX/pink-camera.png" alt="Cyber-shot" style="width: 100%;">
-                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500" class="camera-screen-img" alt="Selfie">
-            </div>
-        </div>
-        <div class="about-text">
-            <h2>Kto ya?</h2>
-            <p>Меня зовут Аня и я — начинающий дизайнер, который обожает все красивое, нежное и стильное. Я создала свой бутик, чтобы делиться своим виденьем женственности и уюта.</p>
+    <section class="agency-section">
+        <div class="agency-text">
+            <h2>A Full Scale Agency Specializing in <br><i class="serif-font" style="color: var(--accent-yellow)">Content Creation</i> & Advertising</h2>
+            <p>نحن نؤمن بأن المحتوى هو روح العلامة التجارية. نساعدك على بناء حضور رقمي لا يمكن تجاهله من خلال استراتيجيات مدروسة وتصاميم تخطف الأنظار.</p>
             <br>
-            <button class="btn-contact">Написать</button>
+            <a href="#" class="pill-btn yellow" style="display: inline-block;">Learn more →</a>
         </div>
-    </section>
-
-    <section class="products">
-        <div class="products-header">
-            <h2>vse tovary</h2>
-            <a href="#" style="color: black; font-weight: 600; text-decoration: none; border-bottom: 1px solid black;">Перейти в каталог</a>
-        </div>
-        
-        <div class="grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500" alt="Bag">
-                <div class="product-info">
-                    <span>СУМКА + БРЕЛОК</span>
-                    <span>900P</span>
-                </div>
-                <div class="swatches">
-                    <div class="swatch" style="background: #e6e0d4;"></div>
-                    <div class="swatch" style="background: #3e2723;"></div>
-                    <div class="swatch" style="background: #f48fb1;"></div>
-                </div>
+        <div class="overlapping-images">
+            <div class="img-card main auto-float">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" alt="Work">
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=500" alt="Heels">
-                <div class="product-info">
-                    <span>МЮЛЛИ MAROON</span>
-                    <span>900P</span>
-                </div>
-                <div class="swatches">
-                    <div class="swatch" style="background: #800020;"></div>
-                    <div class="swatch" style="background: black;"></div>
-                </div>
+            <div class="img-card sub auto-drift">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800" alt="Office">
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=500" alt="Accessories">
-                <div class="product-info">
-                    <span>ЦЕПОЧКА CROISSANT</span>
-                    <span>900P</span>
-                </div>
-                <div class="swatches">
-                    <div class="swatch" style="background: gold;"></div>
-                </div>
+            <div class="img-card deco auto-float">
+                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800" alt="Agency">
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>Сделано с любовью для Rahma © 2026</p>
-    </footer>
+    <section class="offers-section">
+        <div class="vertical-title auto-drift">
+            What<br>We<br>Offer
+        </div>
+        <div class="service-cards">
+            <div class="service-box auto-float">
+                <h3 class="serif-font" style="font-size: 2.5rem;">Content Creation</h3>
+                <p>صناعة محتوى بصري وكتابي يتناسب مع هوية مشروعك، من التصميم الجرافيكي إلى إنتاج الفيديو الاحترافي.</p>
+            </div>
+            <div class="service-box alt auto-float">
+                <h3 class="serif-font" style="font-size: 2.5rem;">Advertising & Management</h3>
+                <p>إدارة الحملات الإعلانية الممولة وتحليل البيانات لضمان وصول رسالتك للجمهور المستهدف بدقة.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer-cta">
+        Download Free Patterns! — Work With The Best — Get Started Today — 
+    </div>
 
     <script>
-        // تأثير بسيط لمواكبة حركة الماوس لزيادة الحيوية
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-            
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
+        // إضافة حركة بسيطة للـ Marquee للتأكد من سلاستها
+        const tracks = document.querySelectorAll('.track');
+        tracks.forEach(track => {
+            const content = track.innerHTML;
+            track.innerHTML = content + content; // مضاعفة المحتوى لضمان استمرارية الحركة
         });
     </script>
 </body>
