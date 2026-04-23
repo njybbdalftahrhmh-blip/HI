@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borcelle Florist | بورتفوليو احترافي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-pink: #ff00ff;
+            --dark-navy: #120d2d;
+            --accent-green: #00ff66;
+            --soft-purple: #e0d7ff;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Syne', sans-serif;
+        }
+
+        body {
+            background-color: var(--soft-purple);
+            color: var(--dark-navy);
+            overflow-x: hidden;
+        }
+
+        h1, h2, .logo {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+        }
+
+        /* --- 1. Header & Hero Section --- */
+        header {
+            background-color: var(--dark-navy);
+            background-image: url('https://www.transparenttextures.com/patterns/floral-paper.png'); /* Pattern simulation */
+            padding: 20px 5%;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-order {
+            background: var(--primary-pink);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 8rem;
+            margin-bottom: 10px;
+            color: var(--soft-purple);
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* --- 2. Marquee (التيكر المتحرك) --- */
+        .marquee {
+            background: var(--primary-pink);
+            color: white;
+            padding: 15px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            display: flex;
+            border-top: 2px solid var(--dark-navy);
+            border-bottom: 2px solid var(--dark-navy);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* --- 3. Our Story Section --- */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 100px 10%;
+            align-items: center;
+            gap: 50px;
+            background: #f4f0ff;
+        }
+
+        .story-content {
+            position: relative;
+        }
+
+        .story-bubble {
+            background: var(--soft-purple);
+            padding: 40px;
+            border-radius: 60% 40% 70% 30% / 40% 50% 50% 60%;
+            border: 2px solid var(--dark-navy);
+            text-align: center;
+        }
+
+        .story-bubble h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark-navy);
+        }
+
+        .story-image-container {
+            position: relative;
+            border: 3px solid var(--dark-navy);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 15px 15px 0px var(--primary-pink);
+        }
+
+        .story-image-container img {
+            width: 100%;
+            display: block;
+            filter: saturate(1.2);
+        }
+
+        /* --- 4. Services Grid --- */
+        .services-section {
+            padding: 80px 5%;
+            background: var(--soft-purple);
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid var(--dark-navy);
+            padding: 40px;
+            border-radius: 15px;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 10px 10px 0px var(--accent-green);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- 5. Why Choose Us (Polaroid Style) --- */
+        .why-us {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 100px 10%;
+            background: #fff;
+            align-items: center;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 60px 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            width: 80%;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .polaroid-caption {
+            font-family: 'Bricolage Grotesque';
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* --- 6. Footer Ticker & Bottom --- */
+        .bottom-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            height: 300px;
+        }
+
+        .gallery-item {
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--dark-navy);
+        }
+
+        footer {
+            background: var(--primary-pink);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            border-top: 4px solid var(--dark-navy);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            .story-section, .why-us, .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Borcelle Florist</div>
+            <ul class="nav-links">
+                <li><a href="#">قصتنا</a></li>
+                <li><a href="#">أعمالنا</a></li>
+                <li><a href="#">خدماتنا</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+            <a href="#" class="btn-order">اطلب الآن</a>
+        </nav>
+
+        <section class="hero">
+            <p>Premium Florist</p>
+            <h1>Borcelle</h1>
+            <a href="#" class="btn-order" style="padding: 15px 40px; font-size: 1rem;">تسوق المجموعة</a>
+        </section>
+    </header>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            • TURNING EVERYDAY MOMENTS INTO ART • FLORAL CREATIONS • TURNING EVERYDAY MOMENTS INTO ART • FLORAL CREATIONS •
+        </div>
+    </div>
+
+    <section class="story-section">
+        <div class="story-content">
+            <div class="story-bubble">
+                <h2>قصتنا</h2>
+                <p>Borcelle هي وجهة لإعادة تعريف الجمال الزهري. نحن ندمج سحر الطبيعة مع التصميم الجريء. بتلات النيون، أزهار منتصف الليل، وتنسيقات تشعر وكأنها خرجت من حلم.</p>
+                <br>
+                <a href="#" class="btn-order">اقرأ المزيد</a>
+            </div>
+        </div>
+        <div class="story-image-container">
+            <img src="https://images.unsplash.com/photo-1599110906818-0006767509d8?q=80&w=1000&auto=format&fit=crop" alt="Florist working">
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌸</div>
+                <h3>متجر الزهور</h3>
+                <p>تشكيلة واسعة من الزهور النادرة واليومية.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>زهور المناسبات</h3>
+                <p>تنسيقات فنية مخصصة لحفلاتكم الخاصة.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>طلبات خاصة</h3>
+                <p>تصاميم حصرية مبنية على ذوقك الفريد.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1000&auto=format&fit=crop" alt="Bouquet">
+                <div class="polaroid-caption">Borcelle Style</div>
+            </div>
+        </div>
+        <div class="why-content">
+            <h2 style="font-size: 3.5rem; margin-bottom: 20px;">لماذا تختارنا؟</h2>
+            <ul style="list-style: none; line-height: 2;">
+                <li>✔️ تحويل المساحات العادية إلى تجارب ساحرة.</li>
+                <li>✔️ زهور طازجة ومستدامة من مزارعنا.</li>
+                <li>✔️ دعم الفن المحلي والإبداع الرقمي.</li>
+            </ul>
+            <br>
+            <a href="#" class="btn-order" style="background: var(--dark-navy);">استكشف خدماتنا</a>
+        </div>
+    </section>
+
+    <div class="marquee" style="background: var(--dark-navy);">
+        <div class="marquee-content">
+            • NOW BOOKING 2026 EVENTS • ENQUIRE NOW TO SECURE YOUR DREAM FLORALS • NOW BOOKING 2026 EVENTS •
+        </div>
+    </div>
+
+    <div class="bottom-gallery">
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507290439931-a861b5a38200?w=500&auto=format')"></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1523694527370-176bc7ad0463?w=500&auto=format')"></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&auto=format')"></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&auto=format')"></div>
+    </div>
+
+    <footer>
+        <h2 style="font-size: 3rem;">Borcelle</h2>
+        <p>© 2026 جميع الحقوق محفوظة - تصميم مستوحى من رحمة</p>
+    </footer>
+
+    <script>
+        // إضافة تأثير تفاعلي بسيط عند التمرير
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                const speed = 2;
+                const top = card.getBoundingClientRect().top;
+                if(top < window.innerHeight) {
+                    card.style.opacity = '1';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
